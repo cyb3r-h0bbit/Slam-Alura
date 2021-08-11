@@ -1,9 +1,21 @@
 #!/usr/bin/env python3
+import sys
 import cv2
+from display import Display
+
+
+W = 2562//4
+H = 1440//4
+
+
+
+disp = Display(W, H)
+orb = cv2.ORB()
 
 def process_frame(img):
-	img = cv2.resize(img,(1920//2, 1080//2))
-	print(img.shape)
+	kp1, des1 = orb.detectAndCompute(img,None)
+	img = cv2.resize(img,(W,H))
+	disp.paint(img)
 
 if __name__ == "__main__":
 	cap = cv2.VideoCapture("test_video.mp4")
