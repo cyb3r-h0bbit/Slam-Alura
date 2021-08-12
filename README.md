@@ -1,3 +1,5 @@
+[![wakatime](https://wakatime.com/badge/github/obliviate-dan/Slam-Alura.svg)](https://wakatime.com/badge/github/obliviate-dan/Slam-Alura)
+
 # Slam-Alura
 Projeto de Machine Learn para Estágio Scuba Team
 
