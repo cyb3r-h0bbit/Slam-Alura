@@ -3,35 +3,25 @@ import sys
 import cv2
 from display import Display
 import numpy as np
-
+from extractor import Extractor
 
 W = 2562//4
 H = 1440//4
 
 disp = Display(W, H)
-
-class FeatureExtractor(object):
-	GX = 16//2
-	GY = 12//2
-
-	def __init__(self):
-		self.orb = cv2.ORB_create(100)
-
-	def extract(self, img):
-		feats = cv2.goodFeaturesToTrack(np.mean(img, axis=2).astype(np.uint8), 3000, qualityLevel=0.01, minDistance=3)
-		print(feats)
-		return feats
-
-
-fe = FeatureExtractor()
+fe = Extractor()
 
 def process_frame(img):
 	img = cv2.resize(img,(W,H))
-	kp = fe.extract(img)
+	matches = fe.extract(img)
 
-	for p in kp:
-		u,v = map(lambda x: int(round(x)), p[0])
-		cv2.circle(img, (u,v), color=(0,255,0), radius=3)
+	print('%d matches' % (len(matches)))
+
+	for pt1, pt2 in matches:
+		u1,v1 = map(lambda x: int(round(x)), pt1.pt)
+		u2,v2 = map(lambda x: int(round(x)), pt2.pt)
+		cv2.circle(img, (u1,v1), color=(0,255,0), radius=3)
+		cv2.line(img, (u1,v1), (u2, v2), color=(255,0,0))
 
 	disp.paint(img)
 
