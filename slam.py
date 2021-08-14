@@ -8,9 +8,10 @@ import numpy as np
 W = 2562 // 4
 H = 1440 // 4
 
-F = 1
+F = 215
 disp = Display(W, H)
 K = np.array([[F,0,W//2],[0,F,H//2],[0,0,1]])
+print(K)
 fe = Extractor(K)
 
 def process_frame(img):
