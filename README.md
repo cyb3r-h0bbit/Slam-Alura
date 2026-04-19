@@ -1,4 +1,4 @@
-# Slam-Alura v2 🗺️
+# S.L.A.M. v2 🗺️
 
 Pipeline de **SLAM Visual Monocular** em Python — mapeamento e localização simultâneos a partir de um único vídeo ou webcam.
 
